@@ -24,5 +24,22 @@ class BackupController extends Controller {
 				echo "vhost not exists";
 			}
 		}
+		function download() {
+			$filename = "/www/backup/".$_GET['file'];
+		
+			$fileinfo = pathinfo($filename);
+			header('Content-type: application/x-'.$fileinfo['extension']);
+			header('Content-Disposition: attachment; filename='.$fileinfo['basename']);
+			header('Content-Length: '.filesize($filename));
+			readfile($filename);
+			exit();
+		}
+		function delete() {
+			$filename = $_GET['file'];
+			if (empty($filename)) die("bad parameter");
+			$filename = "/www/backup/".$filename;
+			system("rm -f $filename");
+		
+		}
 }
 ?>

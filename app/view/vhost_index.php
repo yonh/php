@@ -1,4 +1,4 @@
-<a href="vhost_add.php">add vhost</a>
+<?php include 'header.php'; ?>
 <table>
 <tr>
 	<td>id</td>
