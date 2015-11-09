@@ -41,5 +41,11 @@ class BackupController extends Controller {
 			system("rm -f $filename");
 		
 		}
+		function un() {
+			$filename = $_GET['file'];
+			if (empty($filename)) die('bad parameter');
+			$filename = "/www/backup/$filename";
+			system("tar xf $filename -C /www/backup/");
+		}
 }
 ?>
