@@ -1,5 +1,7 @@
 <?php
 
+define('ROOT_DIR', "/var/www/server_ui/");
+define('CONFIG_BIN', ROOT_DIR."conf_bin");
 define('TEMPLATE_FILE_DIR', $_SERVER['DOCUMENT_ROOT']."/view/");
 
 define('DB_HOST', "127.0.0.1");
