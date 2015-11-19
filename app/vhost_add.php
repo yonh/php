@@ -8,13 +8,13 @@ if (is_post()) {
 	$git = $_POST['git'];
 	
 	// add record to db
-	$sql = "insert into vhost values(null, '$name', '$git', '$domain_name', '/var/www/$name', '/etc/apache2/sites-available/$name')";
+	$sql = "insert into vhost values(null, '$name', '$git', '$domain_name', '/var/www/$name', '/etc/apache2/sites-available/$name.conf')";
 	print_r($sql);
 	db_exec($sql);	
 
 	$content = $_POST['vhost_conf']; 
 	write_file($file, $content);
-	system("./conf_bin " . "tmp/domain_name ". $domain_name.".conf");
+	system("./conf_bin " . "tmp/domain_name ". $name.".conf");
 }
 ?>
 

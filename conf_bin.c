@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include<string.h>  
+
 char* join3(char *s1, char *s2)  
 {  
     char *result = malloc(strlen(s1)+strlen(s2)+1);//+1 for the zero-terminator  
@@ -26,6 +27,10 @@ int main (int argc, char *argv[])
    c = join3( c, " /etc/apache2/sites-available/");
    c = join3( c, argv[2]);
    system(c);
+
+   // run a2ensite xxx.conf
+   char *c_ensite = join3("a2ensite ", argv[2]);
+   system(c_ensite);
   system("service apache2 reload");
 
   setuid(33);

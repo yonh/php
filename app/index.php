@@ -15,9 +15,9 @@ while (($file = $dir->read()) !== false)
 }
 
 
-//默认action=index, 默认controller=IndexController
+//默认action=index, 默认controller=VhostController
 //获取controller和action
-$c = ($_REQUEST['c']?ucfirst($_REQUEST['c']):"Index")."Controller";
+$c = ($_REQUEST['c']?ucfirst($_REQUEST['c']):"Vhost")."Controller";
 $a = $_REQUEST['a']?$_REQUEST['a']:'index';
 
 //controller调用action方法

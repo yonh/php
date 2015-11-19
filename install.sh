@@ -16,12 +16,16 @@ cp -rf init/server_ui.conf /etc/apache2/sites-available/server_ui.conf
 a2ensite server_ui
 service apache2 reload
 
+# compile c program
+gcc conf_bin.c -o conf_bin 
+mv conf_bin app/conf_bin
+
 # copy app to /var/www/server_ui
 mkdir /var/www/server_ui
 cp -rf app/* /var/www/server_ui
 chown www-data.www-data /var/www/server_ui -R
 
-
+# chmod conf_bin
 chown root.root /var/www/server_ui/conf_bin  && chmod 6755 /var/www/server_ui/conf_bin
 
 
