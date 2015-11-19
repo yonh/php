@@ -26,7 +26,7 @@ cp -rf app/* /var/www/server_ui
 chown www-data.www-data /var/www/server_ui -R
 
 # chmod conf_bin
-chown root.root /var/www/server_ui/conf_bin  && chmod 6755 /var/www/server_ui/conf_bin
+chown root.www-data /var/www/server_ui/conf_bin  && chmod 6750 /var/www/server_ui/conf_bin
 
 
 # ssh key manager
