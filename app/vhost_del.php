@@ -28,3 +28,4 @@ system("rm -Rf $document_root");
 
 //delete vhost config
 
+system("./conf_rm_bin $row[vhost_conf_file]");

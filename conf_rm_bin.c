@@ -14,23 +14,19 @@ char* join3(char *s1, char *s2)
     strcat(result, s2);  
   
     return result;  
-}  
+}
 
 int main (int argc, char *argv[])
 {
 	if (33 != getuid()) return 0;
 
 	setuid (0);
-    char b[4] = "def"; // char *b = "def"  
-    char *c = join3("cp", b);  
-	c = join3( "cp ", argv[1]);// /etc/apache2/sites-available/%s", argv[1], argv[2] );
-	c = join3( c, " /etc/apache2/sites-available/");
-	c = join3( c, argv[2]);
-	system(c);
 
-	// run a2ensite xxx.conf
-	char *c_ensite = join3("a2ensite ", argv[2]);
-	system(c_ensite);
+	// run a2dissite xxx.conf and rm config file
+	char *c_dissite = join3("a2dissite ", argv[1]);
+	system(c_dissite);
+	char *c_rmconf = join3("rm -f /etc/apache2/sites-available/", argv[1]);
+	system(c_rmconf);
 	system("service apache2 reload");
 
 	setuid(33);

@@ -18,7 +18,9 @@ service apache2 reload
 
 # compile c program
 gcc conf_bin.c -o conf_bin 
+gcc conf_rm_bin.c -o conf_rm_bin
 mv conf_bin app/conf_bin
+mv conf_rm_bin app/conf_rm_bin
 
 # copy app to /var/www/server_ui
 mkdir /var/www/server_ui
@@ -27,6 +29,7 @@ chown www-data.www-data /var/www/server_ui -R
 
 # chmod conf_bin
 chown root.www-data /var/www/server_ui/conf_bin  && chmod 6750 /var/www/server_ui/conf_bin
+chown root.www-data /var/www/server_ui/conf_rm_bin  && chmod 6750 /var/www/server_ui/conf_rm_bin
 
 
 # ssh key manager

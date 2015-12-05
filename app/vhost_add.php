@@ -8,7 +8,7 @@ if (is_post()) {
 	$git = $_POST['git'];
 	
 	// add record to db
-	$sql = "insert into vhost values(null, '$name', '$git', '$domain_name', '/var/www/$name', '/etc/apache2/sites-available/$name.conf')";
+	$sql = "insert into vhost values(null, '$name', '$git', '$domain_name', '/var/www/$name', '$name.conf')";
 	print_r($sql);
 	db_exec($sql);	
 
