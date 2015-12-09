@@ -5,8 +5,9 @@ class BackupController extends Controller {
 			$file=scandir($dir);
 			foreach ($file as $key=>$value)
 			{
-				  if ($value === "." || $value === "..")
-					      unset($file[$key]);
+			    if ($value === "." || $value === "..") {
+				    unset($file[$key]);
+			    }
 			}
 			
 			$this->assign('list', $file);
