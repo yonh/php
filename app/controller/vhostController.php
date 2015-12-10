@@ -23,7 +23,6 @@ class VhostController extends Controller {
 		} else {
 			$this->view("vhost_add.php");
 		}
-		
 	}
 
 	public function deployer() {
@@ -55,7 +54,7 @@ class VhostController extends Controller {
 
 		//copy file to deployer dir
 		system("cp -rf /www/git/$name /var/www");
-		//echo "done...";	
+		echo "done...";	
 
 	}
 

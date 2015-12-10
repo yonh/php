@@ -1,0 +1,84 @@
+@charset "UTF-8";
+
+/*init*/
+body,div,p,h1,h2,h3,ul,li,ol,span,input,table,tr,td {
+  padding:0;margin:0;
+}
+li{list-style: none;}
+
+input,textarea { /*取消谷歌浏览器选中出现框框*/
+outline: none;
+}
+a{text-decoration: NONE; padding:0 1px;}/*去掉下划线*/
+
+/*body{background:#EEEFFF}*/
+body{
+  font-size: 15px;
+  background:#FFF;
+  height:100%;
+  /*颜色渐变
+  background-image: -moz-linear-gradient(top, #aEdEBA, #aaabbf); /*火狐*/
+  /*background: -o-linear-gradient(top, #AEBEBA 0%,#C69D91 100%);*/ /*Opera*/
+  /*background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #AEBEBA), color-stop(1,#C69D91)); /*Chrome*/
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#AEBEBA', endColorstr='#C69D91', GradientType='0'); /*IE*/
+}
+/*阴影*/  
+#head {
+    -webkit-box-shadow: 3px 3px 6px #aaa;
+    -moz-box-shadow: 3px 3px 6px #ccc;
+    box-shadow: 3px 3px 6px #bbb;/*阴影 和上面2个属性*/
+    opacity:0.6;filter:alpha(opacity=60);background-color:#8f8f8f; /*透明度*/
+    border-radius: 13px;width:95%;height:70px;margin:0px auto;;/*圆角*/
+}
+#center {
+  width:95%;margin:0px auto;margin-top:10px;
+}
+#left,#right {opacity:0.85;filter:alpha(opacity=85); /*透明度*/}
+#left {float:left;
+    border-radius: 13px;width:9%;height:570px;background:#fff;;/*圆角*/
+}
+#right {float:right;
+    border-radius: 13px;width:90%;height:570px;background:#fff;/*圆角*/
+}
+
+#left ul li{
+  cursor: pointer;
+  background:#CCaFEE;font-size: 16px;
+  text-align: center;padding: 0px;margin:5px auto;width:90%;
+  border-radius: 5px;width:90%;height:30px;line-height:30px;margin:5px auto;;/*圆角*/
+}
+#left ul li a{color:#000;}
+#left ul li:hover{
+  background:#DE584A;
+}
+
+#left ul li:hover a{color:#FFF;font-weight: bold}
+
+#left ul li.current{background:#ff6666;}
+
+.text, .btn{border:none;border-radius:7px;margin:5px 0px 0px 5px}
+/*文本框1*/
+.text {
+  width:250px;height:35px;line-height:35px;font-size:1.5em;
+}
+
+/*按钮*/
+a.btn {
+  height:35px;line-height:35px;font-size:1.5em;padding:0px 5px;background:#CCaFEE;
+}
+.btn:hover{background:red;color:#FFF;cursor:pointer}
+
+.tb{
+  /*border-collapse:collapse;*/
+  border-spacing: inherit; /*去掉td内边距*/
+  /*border-collapse:inherit;*/
+  padding:0;margin:0;
+  border:1px solid #CCC;margin: 5px 0px 0px 5px;
+  border-radius: 5px;height:30px;line-height:30px;;/*圆角*/
+}
+.tb th {
+  background:#ddd;
+}
+.tb tr td{padding:0px 5px; border-bottom:1px solid #CCC;}
+
+.operator{background:#eeefff;}
