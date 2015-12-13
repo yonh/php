@@ -1,6 +1,6 @@
 <?php
 
-define('ROOT_DIR', "/var/www/server_ui/");
+define('ROOT_DIR', "/home/ubuntu/server_ui/app/");
 define('CONFIG_BIN', ROOT_DIR."conf_bin");
 define('TEMPLATE_FILE_DIR', $_SERVER['DOCUMENT_ROOT']."/view/");
 

@@ -64,16 +64,45 @@ function db_get_row($sql) {
 
 
 function db_exec($sql) {
-	    $db = connect_db();
-		    return $db->exec($sql);
+	$db = connect_db();
+	return $db->exec($sql);
 }
 
 
 function write_file($file, $content) {
-	    $file = fopen($file, "w") or die("Unable to open file!");
-		    $txt = "Bill Gates\n";
-		    fwrite($file, $content);
-			    fclose($file);
+	$file = fopen($file, "w") or die("Unable to open file!");
+    $txt = "Bill Gates\n";
+    fwrite($file, $content);
+	fclose($file);
+}
+
+
+// $id: vhost id,
+// $name: vhost name
+// $status: run status 1 run, 0 close
+function vhost_run_or_close($id, $name, $status) {
+    $id = intval($id);
+    if (empty($id)) return false;
+    
+    if ($status==1) {
+        $status = 1;
+    } else {
+        $status = 0;
+    }
+    
+    $s = ROOT_DIR."bin/a2site $status $name";
+    exec($s);
+    $sql = "update vhost set is_running=$status where id=$id";
+    db_exec($sql);
+    return true;
+}
+/// vhost operate
+function vhost_start($id, $name) {
+    return vhost_run_or_close($id, $name, 1);
+}
+/// vhost operate
+function vhost_stop($id, $name) {
+    return vhost_run_or_close($id, $name, 0);
 }
 
 ?>

@@ -2,9 +2,8 @@
 
 # www dir
 if [ ! -d "/www"]; then  
-  mkdir /www
-  mkdir /www/git
-  mkdir /www/app
+  mkdir -p /www/git
+ # mkdir /www/app
   chown www-data:www-data /www -R
 fi
 
@@ -30,9 +29,11 @@ chown www-data.www-data /var/www/server_ui -R
 # chmod conf_bin
 chown root.www-data /var/www/server_ui/conf_bin  && chmod 6750 /var/www/server_ui/conf_bin
 chown root.www-data /var/www/server_ui/conf_rm_bin  && chmod 6750 /var/www/server_ui/conf_rm_bin
+chown root.www-data /var/www/server_ui/a2site && chmod 6750 /var/www/server_ui/a2site
+
 
 
 # ssh key manager
-#sudo -u www-data ssh-keygen -t rsa
-#ssh-keyscan -p 2222 -t ecdsa,rsa 120.24.240.96 >> /var/www/.ssh/known_hosts
-#chown www-data:www-data /var/www/.ssh -R
+sudo -u www-data ssh-keygen -t rsa
+ssh-keyscan -p 2222 -t ecdsa,rsa 120.24.240.96 >> /var/www/.ssh/known_hosts
+chown www-data:www-data /var/www/.ssh -R

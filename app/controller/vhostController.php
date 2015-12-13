@@ -24,6 +24,25 @@ class VhostController extends Controller {
 			$this->view("vhost_add.php");
 		}
 	}
+	public function start() {
+	    $name = $_GET['name'];
+	    $id = $_GET['id'];
+	    if (vhost_start($id, $name)) {
+	        echo "网站已开启";
+	    } else {
+	        echo "操作失败";
+	    }
+	}
+	
+	public function stop() {
+	    $name = $_GET['name'];
+	    $id = $_GET['id'];
+	    if (vhost_stop($id, $name)) {
+	        echo "网站已关闭";
+	    } else {
+	        echo "操作失败";
+	    }
+	}
 
 	public function deployer() {
 		$id = $_GET['id'];

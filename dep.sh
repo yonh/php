@@ -4,4 +4,5 @@ chown www-data.www-data /var/www/server_ui -R
 
 chown root.root /var/www/server_ui/conf_bin  && chmod 6755 /var/www/server_ui/conf_bin
 chown root.root /var/www/server_ui/conf_rm_bin  && chmod 6755 /var/www/server_ui/conf_rm_bin
+chown root.www-data /var/www/server_ui/bin/a2site && chmod 6755 /var/www/server_ui/bin/a2site
 
