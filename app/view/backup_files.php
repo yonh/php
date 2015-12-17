@@ -19,7 +19,8 @@ foreach ($data['list'] as $backup) {
 	echo "<td>".$backup["filename"]."</td>";
 	echo "<td>".date('Y-m-d H:i:s', $backup["ctime"])."</td>";
 	echo "<td><a href='index.php?a=delete&c=backup&id=".$backup['id']."'>delete</a></td>";
-    echo "<td><a href='index.php?a=download&c=backup&filename=".$backup['filename']."'>download</a></td>";	
+    echo "<td><a href='index.php?a=download&c=backup&filename=".$backup['filename']."'>download</a></td>";
+    echo "<td><a href='index.php?a=rollback&c=backup&id=".$backup['id']."'>回滚版本</a></td>";
 	
 ?>
 </tr>

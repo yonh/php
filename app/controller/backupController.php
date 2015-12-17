@@ -60,11 +60,18 @@ class BackupController extends Controller {
 			system("rm -f $filename");
 		}
 		
-		function un() {
-			$filename = $_GET['file'];
-			if (empty($filename)) die('bad parameter');
-			$filename = "/www/backup/$filename";
-			system("tar xf $filename -C /www/backup/");
+		//回滚版本
+		function rollback() {
+		    $id = $_GET['id'];
+		    
+			$sql = "select vhost.name,backup.filename from backup join vhost on backup.pid=vhost.id where backup.id=$id";
+			$backup = db_get_row($sql);
+			$name = $backup['name'];
+			$filename = $backup['filename'];
+
+			system("tar xvf $filename -C /www/backup/"); //解压备份文件
+			system("cp -rf /www/backup/$name /var/www"); //拷贝到部署目录
+			system("rm -rf /www/backup/$name");
 		}
 }
 ?>
