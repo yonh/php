@@ -1,4 +1,6 @@
 <?php
+require 'login.php';
+
 require dirname(__FILE__).'/lib/common.php';
 require dirname(__FILE__).'/lib/controller.php';
 

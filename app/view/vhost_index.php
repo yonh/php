@@ -34,6 +34,7 @@
 	echo "<td><a href='index.php?c=vhost&a=deployer&id=".$vhost['id']."'>deployer</a> ";
 	echo "<a href='index.php?c=vhost&a=update&name=".$vhost['name']."'>update</a> ";
 	echo "<a href='index.php?c=backup&a=backup&id=".$vhost['id']."'>backup</a> ";
+	echo "<a href='index.php?c=backup&a=files&id=".$vhost['id']."'>backup files</a> ";
 	echo "<a href='vhost.php?id=".$vhost['id']."'>edit</a> ";
 	
 	

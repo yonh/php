@@ -13,21 +13,36 @@ class BackupController extends Controller {
 			$this->assign('list', $file);
 			$this->view("backup_index.php");
 		}
+		function files() {
+		    $id = intval($_GET['id']);
+		    $vhost = db_get_row("select * from vhost");
+		    if ($vhost) {
+		        $files = db_get_rows("select * from backup");
+		        $this->assign("list", $files);
+		        $this->assign("vhost", $vhost);
+		    }
+		    
+		    $this->view("backup_files.php");
+		}
 		function backup() {
 			$id = intval($_GET['id']);
 			if ($id>0) {
-				$vhost = db_get_row("select * from vhost where id='$id'");	
+				$vhost = db_get_row("select * from vhost where id='$id'");
 				//$time =  date("Ymd_h_i");
 				$time = time();
-				system("tar jcvf /www/backup/".$vhost['name']."-".$time.".tar.bz2 -C /var/www ".$vhost['name']);
+				$filename = "/www/backup/".$vhost['name']."-".$time.".tar.gz";
+				exec("tar jcvf $filename -C /var/www ".$vhost['name']);
+				
+				db_exec("insert into backup values(null, $id, $time, '$filename')");
+				
 
 			} else {
 				echo "vhost not exists";
 			}
 		}
 		function download() {
-			$filename = "/www/backup/".$_GET['file'];
-		
+			$filename = $_GET['filename'];
+
 			$fileinfo = pathinfo($filename);
 			header('Content-type: application/x-'.$fileinfo['extension']);
 			header('Content-Disposition: attachment; filename='.$fileinfo['basename']);
@@ -36,12 +51,15 @@ class BackupController extends Controller {
 			exit();
 		}
 		function delete() {
-			$filename = $_GET['file'];
-			if (empty($filename)) die("bad parameter");
-			$filename = "/www/backup/".$filename;
+		    $id = intval($_GET['id']);
+		    $file = db_get_row("select * from backup where id='$id'");
+		    
+			if (empty($file)) die("bad parameter");
+			$filename = $file['filename'];
+			db_exec("delete from backup where id='$id'");
 			system("rm -f $filename");
-		
 		}
+		
 		function un() {
 			$filename = $_GET['file'];
 			if (empty($filename)) die('bad parameter');

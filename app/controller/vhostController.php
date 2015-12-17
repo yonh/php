@@ -2,7 +2,7 @@
 class VhostController extends Controller {
 	public function index() {
 		$vhosts = db_get_rows("select * from vhost");
-		print_r($this->data);
+		//print_r($this->data);
 		$this->assign("list", $vhosts);
 		$this->view("vhost_index.php");
 	}
@@ -70,7 +70,6 @@ class VhostController extends Controller {
 
 		$a = "cd /www/git/$name; git pull"; 
 		$r = system($a);
-
 		//copy file to deployer dir
 		system("cp -rf /www/git/$name /var/www");
 		echo "done...";	
