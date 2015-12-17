@@ -24,17 +24,19 @@
 // 	echo "<td>".$vhost["document_root"]."</td>";
 	echo "<td>".$vhost["vhost_conf_file"]."</td>";
 	if ($vhost['is_running'] == 1) {
-	    echo "<td style='color:green'>运行中</td>";
+	    echo "<td style='color:green'>运行中 | ";
+	    echo "<a href='index.php??c=vhost&a=stop&id=".$vhost['id']."&name=".$vhost['name']."'>关闭</a></td>";
 	} else {
-	    echo "<td style='color:red'>已停止</td>";
+	    echo "<td style='color:red'>已停止 | ";
+	    echo "<a href='index.php??c=vhost&a=start&id=".$vhost['id']."&name=".$vhost['name']."'>启动</a></td>";
 	}
 	
 	echo "<td><a href='index.php?c=vhost&a=deployer&id=".$vhost['id']."'>deployer</a> ";
 	echo "<a href='index.php?c=vhost&a=update&name=".$vhost['name']."'>update</a> ";
 	echo "<a href='index.php?c=backup&a=backup&id=".$vhost['id']."'>backup</a> ";
 	echo "<a href='vhost.php?id=".$vhost['id']."'>edit</a> ";
-	echo "<a href='index.php??c=vhost&a=start&id=".$vhost['id']."&name=".$vhost['name']."'>start</a> ";
-	echo "<a href='index.php??c=vhost&a=stop&id=".$vhost['id']."&name=".$vhost['name']."'>stop</a> ";
+	
+	
 	echo "<a href='vhost_del.php?id=".$vhost['id']."'>delete</a></td>";
 ?>
 </tr>
