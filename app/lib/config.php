@@ -1,7 +1,11 @@
 <?php
 
 define('ROOT_DIR', "/home/ubuntu/server_ui/app/");
+
+// bins
 define('CONFIG_BIN', ROOT_DIR."conf_bin");
+define('CONFIG_RM_BIN', ROOT_DIR."conf_rm_bin");
+
 define('TEMPLATE_FILE_DIR', $_SERVER['DOCUMENT_ROOT']."/view/");
 
 define('DB_HOST', "127.0.0.1");
