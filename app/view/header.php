@@ -11,4 +11,5 @@
 <a href="index.php?c=backup&a=index">backup files</a>
 <a target="_blank" href="phpmyadmin">phpmyadmin</a>
 
+<a style="right:10px;position:absolute;" href="login.php?logout=1">logout</a>
 <hr/>

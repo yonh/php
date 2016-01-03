@@ -1,8 +1,9 @@
 <?php
-require 'login.php';
 
 require dirname(__FILE__).'/lib/common.php';
 require dirname(__FILE__).'/lib/controller.php';
+
+require 'login.php';
 
 header("Content-type: text/html; charset=utf-8");
 

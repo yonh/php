@@ -41,3 +41,31 @@ CREATE TABLE `vhost` (
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COMMENT='vhost';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+
+DROP TABLE IF EXISTS `reject`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `reject` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ip` char(15) NOT NULL COMMENT 'ip',
+  `deadline` int(11) NOT NULL COMMENT '过期时间,0为不限时',
+  `ctime` int(11) NOT NULL COMMENT '创建时间',
+  `state` tinyint(1) NOT NULL COMMENT '状态 1有效 0无效',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='拒绝登录列表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
+DROP TABLE IF EXISTS `login_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `login_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ip` char(15) NOT NULL COMMENT 'ip',
+  `uid` varchar(20) not null comment '登录uid',
+  `ctime` int(11) NOT NULL COMMENT '创建时间',
+  `state` tinyint(1) not null comment '0失败 1成功',
+  `remark` varchar(20) comment '备注',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='登录日志';
+
