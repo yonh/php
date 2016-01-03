@@ -73,7 +73,29 @@ class VhostController extends Controller {
 		//copy file to deployer dir
 		system("cp -rf /www/git/$name /var/www");
 		echo "done...";	
-
 	}
-
+	
+	// 删除配置文件及程序
+	public function delete() {
+	    $id = $_GET['id'];
+        if (empty($id)) {
+	        echo "bad request";
+	        die;
+        }
+        
+        //get vhost record
+        $sql = "select * from vhost where id=$id";
+        $row = db_get_row($sql);
+        if (empty($row)) {
+        	echo "no result found";
+        	die;
+        }
+        
+        $document_root = $row["document_root"];
+        $name = $row["name"];
+        db_exec("delete from vhost where id='$id'");
+        system("rm -Rf $document_root");
+        system("rm -Rf /www/git/$name");
+        system(CONFIG_RM_BIN. " $row[vhost_conf_file]");
+	}
 }

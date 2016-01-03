@@ -2,19 +2,23 @@
 include 'function.php';
 
 if (is_post()) {
-	$file = "tmp/domain_name";
+    $r = rand(100,999);
+	$file = "temp/config".$r;
+	
 	$domain_name = $_POST['domain_name'];
 	$name = $_POST['name'];
 	$git = $_POST['git'];
 	
 	// add record to db
-	$sql = "insert into vhost values(null, '$name', '$git', '$domain_name', '/var/www/$name', '$name.conf')";
-	print_r($sql);
-	db_exec($sql);	
-
+	$sql = "insert into vhost values(null, '$name', '$git', '$domain_name', '/var/www/$name', '$name.conf', 0)";
+	
+	db_exec($sql);
+    
 	$content = $_POST['vhost_conf']; 
 	write_file($file, $content);
-	system("./conf_bin " . "tmp/domain_name ". $name.".conf");
+	
+	system("./conf_bin $file $name.conf");
+	system("rm -f $file");
 }
 ?>
 

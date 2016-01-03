@@ -37,8 +37,9 @@
 	echo "<a href='index.php?c=backup&a=files&id=".$vhost['id']."'>backup files</a> ";
 	echo "<a href='vhost.php?id=".$vhost['id']."'>edit</a> ";
 	
+	echo "<a href='index.php?c=vhost&a=delete&id=".$vhost['id']."'>delete</a> ";
 	
-	echo "<a href='vhost_del.php?id=".$vhost['id']."'>delete</a></td>";
+// 	echo "<a href='vhost_del.php?id=".$vhost['id']."'>delete</a></td>";
 ?>
 </tr>
 <?php
